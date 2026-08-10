@@ -1,7 +1,7 @@
 # Noote — PWA
 
 A notes / tasks / reminders / calendar assistant, built as a plain HTML/CSS/JS
-Progressive Web App — no build step, no framework required.
+Progressive Web App — no build step, no framework required, only Vanilla JS.
 
 This frontend now talks to the **Noote API** (in the sibling `noote-server`
 project) for everything except theme preference. It supports organizations,
