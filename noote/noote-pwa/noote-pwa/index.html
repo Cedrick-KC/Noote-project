@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="lightBlue">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Noote — your daily assistant</title>
+<meta name="description" content="Notes, tasks, reminders and calendar in one calm, offline-capable assistant." />
+<meta name="theme-color" content="#1C6FA6" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Noote" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div id="offline-banner" class="offline-banner hidden">You're offline — changes are saved on this device and the assistant will resume once you're back online.</div>
+<div id="verify-banner" class="verify-banner hidden">
+  <span>Please verify your email address.</span>
+  <button id="resendVerifyBtn">Resend link</button>
+</div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">N</div>
+      <span class="brand-name">noote</span>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button class="nav-btn active" data-view="today">Today</button>
+      <button class="nav-btn" data-view="notes">Notes</button>
+      <button class="nav-btn" data-view="tasks">Tasks</button>
+      <button class="nav-btn" data-view="calendar">Calendar</button>
+      <button class="nav-btn hidden" id="teamNavBtn" data-view="team">Team</button>
+      <button class="nav-btn hidden" id="activityNavBtn" data-view="activity">Activity</button>
+      <button class="nav-btn" data-view="help">Help</button>
+      <button class="nav-btn" data-view="settings">Settings</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div id="userBadge" class="user-badge"></div>
+      <button id="installBtn" class="install-btn hidden">Install Noote</button>
+      <button id="themeToggle" class="theme-toggle-btn">Theme</button>
+      <div id="themeSwatches" class="theme-swatches hidden"></div>
+      <button id="logoutBtn" class="theme-toggle-btn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <!-- Views are rendered here by app.js -->
+  </main>
+</div>
+
+<div id="authScreen" class="auth-screen hidden"></div>
+
+<button id="assistantBubble" class="assistant-bubble" title="Ask Noote">✦</button>
+<div id="assistantPanel" class="assistant-panel hidden"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
