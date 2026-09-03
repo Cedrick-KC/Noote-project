@@ -109,7 +109,7 @@ const LEGAL = {
 /* ---------- settings (device-local: theme, API URL) ---------- */
 function loadSettings() {
   try { const raw = localStorage.getItem(SETTINGS_KEY); if (raw) return JSON.parse(raw); } catch (e) {}
-  return { apiBaseUrl: "http://localhost:4000", theme: "lightBlue" };
+  return { apiBaseUrl: "https://cedrique.alwaysdata.net", theme: "lightBlue" };
 }
 function saveSettings() { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
 let settings = loadSettings();
