@@ -177,27 +177,56 @@ function showAuthScreen(mode = "login") {
   if (mode === "reset") return; // handled separately by renderResetPasswordScreen
 
   authScreen.innerHTML = `
-    <div class="auth-card">
-      <div class="brand" style="margin-bottom:22px">
-        <div class="brand-mark">N</div>
-        <span class="brand-name">noote</span>
-      </div>
-      <div class="auth-tabs">
-        <button class="auth-tab ${mode === "login" ? "active" : ""}" data-mode="login">Log in</button>
-        <button class="auth-tab ${mode === "register" ? "active" : ""}" data-mode="register">Start an organization</button>
-      </div>
-      <div id="authError" class="auth-error hidden"></div>
-      <form id="authForm" class="auth-form"></form>
-      <div class="auth-footer">
-        ${mode === "login" ? `<button class="link-btn" id="forgotLink">Forgot password?</button>` : ""}
-        <div class="auth-legal-links">
-          <button class="link-btn" data-legal="terms">Terms</button>
-          <span>·</span>
-          <button class="link-btn" data-legal="privacy">Privacy</button>
-        </div>
+  <div class="auth-card">
+    <div class="brand" style="margin-bottom:22px">
+      <div class="brand-mark">N</div>
+      <span class="brand-name">noote</span>
+    </div>
+
+    <div class="auth-intro">
+      <h1>Noote - Modern Task Management Platform</h1>
+      <p>
+        Noote helps businesses work in teams, assign tasks to workers,
+        track task progress through file proofs and comments, and see
+        work get done in real time.
+      </p>
+    </div>
+
+    <div class="auth-tabs">
+      <button
+        class="auth-tab ${mode === "login" ? "active" : ""}"
+        data-mode="login"
+      >
+        Log in
+      </button>
+
+      <button
+        class="auth-tab ${mode === "register" ? "active" : ""}"
+        data-mode="register"
+      >
+        Start an organization
+      </button>
+    </div>
+
+    <div id="authError" class="auth-error hidden"></div>
+
+    <form id="authForm" class="auth-form"></form>
+
+    <div class="auth-footer">
+      ${
+        mode === "login"
+          ? `<button class="link-btn" id="forgotLink">Forgot password?</button>`
+          : ""
+      }
+
+      <div class="auth-legal-links">
+        <button class="link-btn" data-legal="terms">Terms</button>
+        <span>·</span>
+        <button class="link-btn" data-legal="privacy">Privacy</button>
       </div>
     </div>
-  `;
+  </div>
+`;
 
   const formEl = document.getElementById("authForm");
   if (mode === "login") {
