@@ -1,77 +1,450 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="lightBlue">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Noote — Your daily assistant</title>
-<meta name="author" content="KARANGWA Cedrique" />  
-<meta name="google-site-verification" content="rEOSXUsfF3oClfRNmN6Mgj06lRUNGwFyzOOkrCw5LVM" />  
-<meta name="description" content="Noote helps businesses assign tasks or work to workers, manage their notes, reminders and many more all in one app." />
-<meta property="og:title" content="Noote - Task Management For Teams." />
-<meta property="og:description" content="Assign tasks, track visits, and manage your team - builtfor organisations." /> 
-<meta property="og:url" content="https://noote-lime.vercel.app" />  
-<meta property="og:type" content="webapp" /> 
-<meta property="og:image" content="https://noote-lime.vercel.app/icons/icon-512.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Noote - Task Management For Teams" /> 
-<meta name="twitter:description" content="Assign tasks, track visits, manage your notes and reminders" />  
-<meta name="theme-color" content="#1C6FA6" />
-<link rel="canonical" href="https://note-lime.vercel.app" />  
-<link rel="manifest" href="manifest.json" />
-<link rel="icon" href="icons/favicon-32.png" sizes="32x32" />
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="Noote" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <!-- Primary SEO -->
+  <title>Noote — Task Management for Teams</title>
+
+  <meta name="author" content="KARANGWA Cedrique" />
+
+  <meta
+    name="description"
+    content="Noote helps businesses assign tasks to workers, track progress, manage notes and reminders, and collaborate with their teams in one modern platform."
+  />
+
+  <meta
+    name="keywords"
+    content="Noote, task management, team management, task tracking, business productivity, team collaboration, work management"
+  />
+
+  <!-- Google verification -->
+  <meta
+    name="google-site-verification"
+    content="rEOSXUsfF3oClfRNmN6Mgj06lRUNGwFyzOOkrCw5LVM"
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Noote — Task Management for Teams" />
+
+  <meta
+    property="og:description"
+    content="Assign tasks, track progress, manage notes and reminders, and keep your team organized with Noote."
+  />
+
+  <meta
+    property="og:url"
+    content="https://noote-lime.vercel.app/"
+  />
+
+  <meta property="og:type" content="website" />
+
+  <meta
+    property="og:image"
+    content="https://noote-lime.vercel.app/icons/icon-512.png"
+  />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+
+  <meta
+    name="twitter:title"
+    content="Noote — Task Management for Teams"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Assign tasks, track progress, manage notes and reminders, and keep your team organized with Noote."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://noote-lime.vercel.app/icons/icon-512.png"
+  />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#1C6FA6" />
+
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="https://noote-lime.vercel.app/"
+  />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Icons -->
+  <link
+    rel="icon"
+    href="icons/favicon-32.png"
+    sizes="32x32"
+  />
+
+  <link
+    rel="apple-touch-icon"
+    href="icons/apple-touch-icon.png"
+  />
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  />
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  />
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Noote"
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- GitHub Star Button -->
+  <style>
+    .github-star-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      width: 100%;
+      box-sizing: border-box;
+
+      margin-top: 8px;
+      padding: 10px 12px;
+
+      border: 1px solid rgba(28, 111, 166, 0.2);
+      border-radius: 10px;
+
+      background: rgba(28, 111, 166, 0.06);
+
+      color: inherit;
+      text-decoration: none;
+
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .github-star-btn:hover {
+      transform: translateY(-2px);
+
+      background: rgba(28, 111, 166, 0.12);
+
+      border-color: rgba(28, 111, 166, 0.35);
+
+      box-shadow:
+        0 5px 15px rgba(28, 111, 166, 0.12);
+    }
+
+    .github-star-btn:active {
+      transform: translateY(0);
+    }
+
+    .github-star-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .github-star-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 24px;
+      height: 24px;
+
+      border-radius: 7px;
+
+      background: rgba(28, 111, 166, 0.1);
+
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .github-star-text {
+      white-space: nowrap;
+    }
+
+    .github-star-count {
+      min-width: 24px;
+
+      padding-left: 8px;
+
+      border-left: 1px solid rgba(28, 111, 166, 0.2);
+
+      text-align: center;
+
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 600px) {
+      .github-star-btn {
+        padding: 9px 10px;
+      }
+
+      .github-star-text {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="offline-banner" class="offline-banner hidden">You're offline — changes are saved on this device and the assistant will resume once you're back online.</div>
-<div id="verify-banner" class="verify-banner hidden">
-  <span>Please verify your email address.</span>
-  <button id="resendVerifyBtn">Resend link</button>
-</div>
+  <!-- Offline notification -->
+  <div
+    id="offline-banner"
+    class="offline-banner hidden"
+  >
+    You're offline — changes are saved on this device and the assistant
+    will resume once you're back online.
+  </div>
 
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-mark">N</div>
-      <span class="brand-name">noote</span>
-    </div>
+  <!-- Email verification -->
+  <div
+    id="verify-banner"
+    class="verify-banner hidden"
+  >
+    <span>Please verify your email address.</span>
+    <button id="resendVerifyBtn">
+      Resend link
+    </button>
+  </div>
 
-    <nav class="nav" id="nav">
-      <button class="nav-btn active" data-view="today">Today</button>
-      <button class="nav-btn" data-view="notes">Notes</button>
-      <button class="nav-btn" data-view="tasks">Tasks</button>
-      <button class="nav-btn" data-view="calendar">Calendar</button>
-      <button class="nav-btn hidden" id="teamNavBtn" data-view="team">Team</button>
-      <button class="nav-btn hidden" id="activityNavBtn" data-view="activity">Activity</button>
-      <button class="nav-btn" data-view="help">Help</button>
-      <button class="nav-btn" data-view="settings">Settings</button>
-    </nav>
 
-    <div class="sidebar-bottom">
-      <div id="userBadge" class="user-badge"></div>
-      <button id="installBtn" class="install-btn hidden">Install Noote</button>
-      <button id="themeToggle" class="theme-toggle-btn">Theme</button>
-      <div id="themeSwatches" class="theme-swatches hidden"></div>
-      <button id="logoutBtn" class="theme-toggle-btn">Log out</button>
-    </div>
-  </aside>
+  <!-- Application -->
+  <div class="app-shell">
 
-  <main class="main" id="main">
-    <!-- Views are rendered here by app.js -->
-  </main>
-</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
-<div id="authScreen" class="auth-screen hidden"></div>
+      <!-- Brand -->
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <span class="brand-name">noote</span>
+      </div>
 
-<button id="assistantBubble" class="assistant-bubble" title="Ask Noote">✦</button>
-<div id="assistantPanel" class="assistant-panel hidden"></div>
 
-<script src="js/app.js"></script>
+      <!-- Navigation -->
+      <nav
+        class="nav"
+        id="nav"
+        aria-label="Main navigation"
+      >
+        <button
+          class="nav-btn active"
+          data-view="today"
+        >
+          Today
+        </button>
+
+        <button
+          class="nav-btn"
+          data-view="notes"
+        >
+          Notes
+        </button>
+
+        <button
+          class="nav-btn"
+          data-view="tasks"
+        >
+          Tasks
+        </button>
+
+        <button
+          class="nav-btn"
+          data-view="calendar"
+        >
+          Calendar
+        </button>
+
+        <button
+          class="nav-btn hidden"
+          id="teamNavBtn"
+          data-view="team"
+        >
+          Team
+        </button>
+
+        <button
+          class="nav-btn hidden"
+          id="activityNavBtn"
+          data-view="activity"
+        >
+          Activity
+        </button>
+
+        <button
+          class="nav-btn"
+          data-view="help"
+        >
+          Help
+        </button>
+
+        <button
+          class="nav-btn"
+          data-view="settings"
+        >
+          Settings
+        </button>
+      </nav>
+
+
+      <!-- Sidebar bottom -->
+      <div class="sidebar-bottom">
+
+        <!-- User -->
+        <div
+          id="userBadge"
+          class="user-badge"
+        ></div>
+
+
+        <!-- GitHub Star -->
+        <a
+          class="github-star-btn"
+          href="https://github.com/YOUR_USERNAME/YOUR_REPOSITORY"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Star Noote on GitHub"
+        >
+
+          <span class="github-star-left">
+
+            <span
+              class="github-star-icon"
+              aria-hidden="true"
+            >
+              ★
+            </span>
+
+            <span class="github-star-text">
+              Star Noote on GitHub
+            </span>
+
+          </span>
+
+          <span
+            id="githubStars"
+            class="github-star-count"
+          >
+            —
+          </span>
+
+        </a>
+
+
+        <!-- Install -->
+        <button
+          id="installBtn"
+          class="install-btn hidden"
+        >
+          Install Noote
+        </button>
+
+
+        <!-- Theme -->
+        <button
+          id="themeToggle"
+          class="theme-toggle-btn"
+        >
+          Theme
+        </button>
+
+        <div
+          id="themeSwatches"
+          class="theme-swatches hidden"
+        ></div>
+
+
+        <!-- Logout -->
+        <button
+          id="logoutBtn"
+          class="theme-toggle-btn"
+        >
+          Log out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- Main application -->
+    <main
+      class="main"
+      id="main"
+    >
+      <!-- Views are rendered here by app.js -->
+    </main>
+
+  </div>
+
+
+  <!-- Authentication -->
+  <div
+    id="authScreen"
+    class="auth-screen hidden"
+  ></div>
+
+
+  <!-- AI Assistant -->
+  <button
+    id="assistantBubble"
+    class="assistant-bubble"
+    title="Ask Noote"
+    aria-label="Ask Noote"
+  >
+    ✦
+  </button>
+
+  <div
+    id="assistantPanel"
+    class="assistant-panel hidden"
+  ></div>
+
+
+  <!-- Application JavaScript -->
+  <script src="js/app.js"></script>
+
 </body>
 </html>
