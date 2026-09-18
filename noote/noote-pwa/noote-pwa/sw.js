@@ -1,4 +1,4 @@
-const CACHE_NAME = "noote-cache-v5";
+const CACHE_NAME = "noote-cache-v6";
 const SYNCABLE = /^\/api\/(notes|tasks|reminders|events)(?:\/|$)/;
 const APP_SHELL = ["./", "./index.html", "./landing.html", "./manifest.json", "./css/styles.css", "./css/landing.css", "./css/sync-status.css", "./css/conflict-ui.css", "./js/app.js", "./js/offline-sync.js", "./js/sync-status.js", "./js/conflict-ui.js", "./js/cache-isolation.js", "./icons/icon-192.png", "./icons/icon-512.png"];
 self.addEventListener("install", (event) => event.waitUntil(caches.open(CACHE_NAME).then(async (cache) => { await Promise.all(APP_SHELL.map((asset) => cache.add(asset).catch(() => null))); await self.skipWaiting(); })));
