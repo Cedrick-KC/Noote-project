@@ -7,21 +7,14 @@
   <meta name="author" content="KARANGWA Cedrique" />
   <meta name="description" content="Noote helps businesses assign tasks to workers, track progress, manage notes and reminders, and collaborate with their teams in one modern platform." />
   <meta name="theme-color" content="#1C6FA6" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/sync-status.css" />
-  <link rel="stylesheet" href="css/conflict-ui.css" />
+  <link rel="manifest" href="manifest.json" /><link rel="icon" href="icons/favicon-32.png" sizes="32x32" /><link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" /><link rel="stylesheet" href="css/sync-status.css" /><link rel="stylesheet" href="css/conflict-ui.css" />
 </head>
 <body>
-  <div id="offline-banner" class="offline-banner hidden">You're offline — changes are saved on this device and the assistant will resume once you're back online.</div>
-  <div id="verify-banner" class="verify-banner hidden"><span>Please verify your email address.</span><button id="resendVerifyBtn">Resend link</button></div>
+  <div id="offline-banner" class="offline-banner hidden">You're offline — changes are saved on this device and the assistant will resume once you're back online.</div><div id="verify-banner" class="verify-banner hidden"><span>Please verify your email address.</span><button id="resendVerifyBtn">Resend link</button></div>
   <div class="app-shell"><aside class="sidebar"><div class="brand"><div class="brand-mark">N</div><span class="brand-name">noote</span></div><nav class="nav" id="nav" aria-label="Main navigation"><button class="nav-btn active" data-view="today">Today</button><button class="nav-btn" data-view="notes">Notes</button><button class="nav-btn" data-view="tasks">Tasks</button><button class="nav-btn" data-view="calendar">Calendar</button><button class="nav-btn hidden" id="teamNavBtn" data-view="team">Team</button><button class="nav-btn hidden" id="activityNavBtn" data-view="activity">Activity</button><button class="nav-btn" data-view="help">Help</button><button class="nav-btn" data-view="settings">Settings</button></nav><div class="sidebar-bottom"><div id="userBadge" class="user-badge"></div><a class="github-star-btn" href="https://github.com/Cedrick-KC/Noote-project" target="_blank" rel="noopener noreferrer" aria-label="Star Noote on GitHub"><span class="github-star-left"><span class="github-star-icon" aria-hidden="true">★</span><span class="github-star-text">Star Noote on GitHub</span></span><span id="githubStars" class="github-star-count">—</span></a><button id="installBtn" class="install-btn hidden">Install Noote</button><button id="themeToggle" class="theme-toggle-btn">Theme</button><div id="themeSwatches" class="theme-swatches hidden"></div><button id="logoutBtn" class="theme-toggle-btn">Log out</button></div></aside><main class="main" id="main"></main></div>
   <div id="authScreen" class="auth-screen hidden"></div><button id="assistantBubble" class="assistant-bubble" title="Ask Noote" aria-label="Ask Noote">✦</button><div id="assistantPanel" class="assistant-panel hidden"></div>
-  <script src="js/offline-sync.js"></script><script src="js/sync-status.js"></script><script src="js/conflict-ui.js"></script><script src="js/app.js"></script>
+  <script src="js/offline-sync.js"></script><script src="js/sync-status.js"></script><script src="js/conflict-ui.js"></script><script src="js/cache-isolation.js"></script><script src="js/app.js"></script>
 </body>
 </html>
