@@ -1,13 +1,18 @@
 const Task = require("../models/Task");
 const { requireAuth } = require("./auth");
 
-/* Narrow guard for replayed and stale task mutations. Existing route validation,
-authorization, population, audit logging, and recurrence behavior remain intact. */
+/* Narrow guard for replayed and stale top-level task mutations. It is mounted
+ * at /api/tasks, so route parameters are derived from the request path. */
 function taskSyncGuard(req, res, next) {
   return requireAuth(req, res, async () => {
     if (!["POST", "PATCH", "DELETE"].includes(req.method)) return next();
 
-    if (req.method === "POST" && req.path === "/") {
+    const segments = req.path.split("/").filter(Boolean);
+    const isCollectionCreate = req.method === "POST" && segments.length === 0;
+    const isItemMutation = ["PATCH", "DELETE"].includes(req.method) && segments.length === 1;
+    if (!isCollectionCreate && !isItemMutation) return next();
+
+    if (isCollectionCreate) {
       const operationId = req.body?.operationId;
       if (!operationId) return next();
       const existing = await Task.findOne({ operationId, organization: req.user.organization });
@@ -22,8 +27,7 @@ function taskSyncGuard(req, res, next) {
       return next();
     }
 
-    if (!req.params.id) return next();
-    const task = await Task.findOne({ _id: req.params.id, organization: req.user.organization });
+    const task = await Task.findOne({ _id: segments[0], organization: req.user.organization });
     if (!task) return next();
 
     const { operationId, expectedVersion } = req.body || {};
