@@ -1,72 +1,8 @@
-const CACHE_NAME = "noote-cache-v4";
+const CACHE_NAME = "noote-cache-v5";
 const SYNCABLE = /^\/api\/(notes|tasks|reminders|events)(?:\/|$)/;
-const APP_SHELL = [
-  "./", "./index.html", "./landing.html", "./manifest.json",
-  "./css/styles.css", "./css/landing.css", "./css/sync-status.css",
-  "./js/app.js", "./js/offline-sync.js", "./js/sync-status.js",
-  "./icons/icon-192.png", "./icons/icon-512.png"
-];
-
-self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then(async (cache) => {
-    await Promise.all(APP_SHELL.map((asset) => cache.add(asset).catch(() => null)));
-    await self.skipWaiting();
-  }));
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-    )).then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener("fetch", (event) => {
-  const request = event.request;
-  const url = new URL(request.url);
-
-  // The page-level IndexedDB queue owns mutation replay. Keeping the service
-  // worker out of writes prevents duplicate queue entries.
-  if (url.origin === self.location.origin && SYNCABLE.test(url.pathname) && request.method !== "GET") return;
-
-  if (url.pathname.startsWith("/api/assistant")) {
-    event.respondWith(fetch(request).catch(() => new Response(
-      JSON.stringify({ error: "offline" }),
-      { headers: { "Content-Type": "application/json" }, status: 503 }
-    )));
-    return;
-  }
-
-  if (request.mode === "navigate" && url.origin === self.location.origin && url.pathname === "/") {
-    event.respondWith(caches.match("./landing.html"));
-    return;
-  }
-
-  if (url.origin === self.location.origin && request.method === "GET") {
-    event.respondWith(
-      caches.match(request).then((cached) => cached || fetch(request).then((response) => {
-        if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
-        return response;
-      }).catch(() => caches.match("./index.html")))
-    );
-  }
-});
-
-self.addEventListener("push", (event) => {
-  let data = { title: "Noote", body: "You have an update." };
-  try { data = event.data.json(); } catch (_) {}
-  event.waitUntil(self.registration.showNotification(data.title || "Noote", {
-    body: data.body || "", icon: "icons/icon-192.png", badge: "icons/icon-192.png",
-    data: { url: data.url || "./" }
-  }));
-});
-
-self.addEventListener("notificationclick", (event) => {
-  event.notification.close();
-  const targetUrl = event.notification.data?.url || "./";
-  event.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {
-    for (const client of clients) if ("focus" in client) return client.focus();
-    if (self.clients.openWindow) return self.clients.openWindow(targetUrl);
-  }));
-});
+const APP_SHELL = ["./", "./index.html", "./landing.html", "./manifest.json", "./css/styles.css", "./css/landing.css", "./css/sync-status.css", "./css/conflict-ui.css", "./js/app.js", "./js/offline-sync.js", "./js/sync-status.js", "./js/conflict-ui.js", "./js/cache-isolation.js", "./icons/icon-192.png", "./icons/icon-512.png"];
+self.addEventListener("install", (event) => event.waitUntil(caches.open(CACHE_NAME).then(async (cache) => { await Promise.all(APP_SHELL.map((asset) => cache.add(asset).catch(() => null))); await self.skipWaiting(); })));
+self.addEventListener("activate", (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim())));
+self.addEventListener("fetch", (event) => { const request = event.request; const url = new URL(request.url); if (url.origin === self.location.origin && SYNCABLE.test(url.pathname) && request.method !== "GET") return; if (url.pathname.startsWith("/api/assistant")) { event.respondWith(fetch(request).catch(() => new Response(JSON.stringify({ error: "offline" }), { headers: { "Content-Type": "application/json" }, status: 503 }))); return; } if (request.mode === "navigate" && url.origin === self.location.origin && url.pathname === "/") { event.respondWith(caches.match("./landing.html")); return; } if (url.origin === self.location.origin && request.method === "GET") event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => { if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone())); return response; }).catch(() => caches.match("./index.html")))); });
+self.addEventListener("push", (event) => { let data = { title: "Noote", body: "You have an update." }; try { data = event.data.json(); } catch (_) {} event.waitUntil(self.registration.showNotification(data.title || "Noote", { body: data.body || "", icon: "icons/icon-192.png", badge: "icons/icon-192.png", data: { url: data.url || "./" } })); });
+self.addEventListener("notificationclick", (event) => { event.notification.close(); const targetUrl = event.notification.data?.url || "./"; event.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => { for (const client of clients) if ("focus" in client) return client.focus(); if (self.clients.openWindow) return self.clients.openWindow(targetUrl); })); });
