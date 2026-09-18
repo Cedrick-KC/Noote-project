@@ -5,7 +5,8 @@ const QUEUE_STORE = "requests";
 const SYNC_TAG = "noote-api-sync";
 const APP_SHELL = [
   "./", "./index.html", "./landing.html", "./manifest.json",
-  "./css/styles.css", "./css/landing.css", "./js/app.js", "./js/offline-sync.js",
+  "./css/styles.css", "./css/landing.css", "./css/sync-status.css",
+  "./js/app.js", "./js/offline-sync.js", "./js/sync-status.js",
   "./icons/icon-192.png", "./icons/icon-512.png"
 ];
 
