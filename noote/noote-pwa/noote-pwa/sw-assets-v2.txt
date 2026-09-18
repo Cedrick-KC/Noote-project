@@ -1,0 +1,3 @@
+
+  "./css/conflict-ui.css",
+  "./js/conflict-ui.js",
